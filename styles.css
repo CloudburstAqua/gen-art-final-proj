@@ -1,7 +1,7 @@
 /* GLOBAL STYLES */
 body {
   background: #333;
-/*   padding: 5em; */
+  margin: 2em;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -20,17 +20,15 @@ body {
   margin: 15px; 
   letter-spacing: .15em; 
   animation: 
-    typing 6.5s steps(80, end) forwards, /* NTS: forwards makes sure text stays there */
+    typing 7s steps(65, end) forwards, /* NTS: forwards makes sure text stays there */
     blink-caret .5s step-end infinite;
 }
 
-/* The typing effect */
 @keyframes typing {
   from { width: 0 }
   to { width: 100% }
 }
 
-/* The typewriter cursor effect */
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: orange }
