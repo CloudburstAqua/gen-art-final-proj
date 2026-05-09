@@ -1,7 +1,7 @@
 /* GLOBAL STYLES */
 body {
-  background: #333;
-  margin: 2em;
+  background: #161924;
+  margin: 1em;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -18,18 +18,21 @@ body {
   align-items: center;
   white-space: nowrap; 
   margin: 15px; 
-  letter-spacing: .15em; 
-  animation: 
-    typing 7s steps(65, end) forwards, /* NTS: forwards makes sure text stays there */
-    blink-caret .5s step-end infinite;
+  letter-spacing: .13em; 
+  animation: typing 7s steps(65, end) forwards; /* NTS: forwards makes sure text stays there */
+/*     blink-caret .5s step-end infinite; */
 }
 
 @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+  from { 
+    width: 0;
+  }
+  to { 
+    width: 100%;
+  }
 }
 
-@keyframes blink-caret {
+/* @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: orange }
-}
+} */
