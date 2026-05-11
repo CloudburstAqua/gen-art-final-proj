@@ -38,7 +38,11 @@
       came after that, but when I woke up, I was overjoyed by the sight
       of my regular, un-infested arms.`
 
-      const keywords = 'rushing river centipede red bumps pincers poking relieving instant skin intact centipede irregular spiny extrusions red bumps ribbon unconscious large long centipede'
+      const keywords = ['rushing river', 'large, long centipede', 'red bumps', 'pincers',
+        'poking', 'most relieving feeling', 'all in an instant',
+        'skin intact', 'irregular spiny extrusions', 'red bumps',
+        'like a ribbon'
+      ]
 
 
       const lines = desc.trim().split('\n');
@@ -46,7 +50,7 @@
       let first_run = false
 
       function crazy () {
-        const fps = 1500
+        const fps = 10000
         setTimeout(crazy, fps)
 
         const r = nn.random(100, 170)
@@ -60,6 +64,8 @@
 
         let div = document.createElement('div')
         div.classList.add('typewriter')
+
+        div.style.marginLeft = nn.random(window.innerWidth * 0.7) + 'px'
 
         let para = document.createElement('p')
         para.textContent = ran
@@ -102,7 +108,73 @@
         setTimeout(print, 7000)
       }
       print()
+      
+      function resize () {
+        canvas.resize(nn.width, document.body.scrollHeight)
+      }
+      
+      function centipede () {
+        nn.get('body')
 
+        canvas = nn.create('canvas')
+          .position(0, 0)
+          .resize(nn.width, document.body.scrollHeight)
+          .addTo('body')
+
+        canvas.fillStyle = 'red'
+        canvas.ctx.strokeStyle = 'rgba(255, 0, 0, 0.7)'
+        canvas.style.position = 'absolute' //
+        canvas.style.top = '0'
+        canvas.style.left = '0'
+        canvas.style.zIndex = '-1'
+        canvas.style.pointerEvents = 'none'
+
+        // setup perlin noise
+        p = nn.perlin()
+        p.seed()
+
+        x = nn.width / 3
+        y = nn.height / 2
+        
+      }
+      //
+
+      function draw () {
+        requestAnimationFrame(draw)
+        
+        resize()
+
+        // makes old circles fade into background
+        canvas.ctx.fillStyle = 'rgba(0,0,0,0.03)'
+        canvas.ctx.fillRect(0, 0, nn.width, document.body.scrollHeight) 
+        //NTS: .scrollHeight ensures that the rectangle will cover the page as it scrolls
+
+        const t = performance.now() * 0.0008
+        const cx = nn.width / 3
+        const cy = window.scrollY + nn.height / 3
+        const r = 300
+
+        x = p.get(t, 0) * r + cx
+        y = p.get(t, 100) * r + cy
+
+        canvas.fillStyle = 'red'
+        canvas.circle(x, y, 10)
+
+        canvas.ctx.beginPath()
+        canvas.ctx.moveTo(x, y)
+        canvas.ctx.lineTo(x - 20, y + 20)
+        canvas.ctx.stroke()
+
+        canvas.ctx.beginPath()
+        canvas.ctx.moveTo(x, y)
+        canvas.ctx.lineTo(x + 20, y + 20)
+        canvas.ctx.stroke()
+        
+      }
+
+      centipede()
+      resize()
+      draw()
     }
 
     nn.on('load', setup)
