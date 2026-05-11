@@ -14,8 +14,8 @@
       // const fps = 10000
       // setTimeout(setup, fps)
 
-      const desc = 
-      `I was swimming down a rushing river and saw a large, long
+      const desc =
+        `I was swimming down a rushing river and saw a large, long
       centipede in the water ahead of me. I tried to swim backwards
       to no avail and closed my eyes hoping to pass it. When I ope-
       -ned my eyes I saw another one on the other side of the stream 
@@ -37,28 +37,65 @@
       the bumps disappear from my arms. I don't remember the dream that
       came after that, but when I woke up, I was overjoyed by the sight
       of my regular, un-infested arms.`
-      
+
+      const keywords = 'rushing river centipede red bumps pincers poking relieving instant skin intact centipede irregular spiny extrusions red bumps ribbon unconscious large long centipede'
+  
+
       const lines = desc.trim().split('\n');
       let i = 0;
-      
-      function print() {
-        // if (i >= desc.length) return
-        if (i >= lines.length) return;
+      let first_run = false
+
+      function crazy () {
+        const fps = 1000
+        setTimeout(crazy, fps)
+
+        const r = nn.random(100,170)
+        const g = nn.random(10)
+        const b = nn.random(10)
+        const color = nn.rgb(r, g, b)
+        const size = nn.random(10, 40)
+
+        const ran = nn.random(keywords)
+        nn.create('a-box')
+          .content(ran)
+          .addClass('typewriter')
+          .css('color', color)
+          .css('font-size', size)
+          .addTo('body')
+
+        const y = nn.get('body').scrollHeight
+        window.scrollTo(0, y)
+      }
+
+      function print () {
         let div = document.createElement('div')
         let para = document.createElement('p')
-        
+
         div.classList.add('typewriter')
-        para.textContent = lines[i];
-        // [i]
+
+        if (!first_run) {
+          para.textContent = lines[i]
+          i++
+
+          if (i >= lines.length) {
+            first_run = true
+          }
+
+        } else {
+          const random_index = Math.floor(Math.random() * lines.length);
+          para.textContent = lines[random_index]
+          crazy()
+        }
+
         div.appendChild(para)
         document.body.appendChild(div)
-        i++
-        
+
         const y = nn.get('body').scrollHeight
         window.scrollTo(0, y)
         setTimeout(print, 7000)
       }
       print()
+
     }
 
     nn.on('load', setup)

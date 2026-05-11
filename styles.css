@@ -10,7 +10,7 @@ body {
 /* typewriter effect source/inspo */
 /* https://css-tricks.com/snippets/css/typewriter-effect/ */
 
-.typewriter p {
+.typewriter {
   width: 0;
   color: #fff;
   font-family: monospace;
