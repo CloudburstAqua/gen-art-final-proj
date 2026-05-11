@@ -39,29 +39,36 @@
       of my regular, un-infested arms.`
 
       const keywords = 'rushing river centipede red bumps pincers poking relieving instant skin intact centipede irregular spiny extrusions red bumps ribbon unconscious large long centipede'
-  
+
 
       const lines = desc.trim().split('\n');
       let i = 0;
       let first_run = false
 
       function crazy () {
-        const fps = 1000
+        const fps = 1500
         setTimeout(crazy, fps)
 
-        const r = nn.random(100,170)
+        const r = nn.random(100, 170)
         const g = nn.random(10)
         const b = nn.random(10)
+
         const color = nn.rgb(r, g, b)
         const size = nn.random(10, 40)
 
         const ran = nn.random(keywords)
-        nn.create('a-box')
-          .content(ran)
-          .addClass('typewriter')
-          .css('color', color)
-          .css('font-size', size)
-          .addTo('body')
+
+        let div = document.createElement('div')
+        div.classList.add('typewriter')
+
+        let para = document.createElement('p')
+        para.textContent = ran
+
+        para.style.color = color
+        para.style.fontSize = `${size}px`
+
+        div.appendChild(para)
+        document.body.appendChild(div)
 
         const y = nn.get('body').scrollHeight
         window.scrollTo(0, y)
