@@ -100,7 +100,7 @@
 
         const y = nn.get('body').scrollHeight
         window.scrollTo(0, y)
-        setTimeout(print, 5700)
+        setTimeout(print, 3500)
       }
       print()
       
@@ -144,7 +144,7 @@
 
         const t = performance.now() * 0.001
         const cx = nn.width / 3
-        const cy = window.scrollY + nn.height / 3
+        const cy = window.scrollY + nn.height / 2
         const r = 400
 
         x = p.get(t, 0) * r + cx
