@@ -19,7 +19,7 @@ body {
   white-space: nowrap; 
   margin: 15px; 
   letter-spacing: .13em; 
-  animation: typing 6s steps(68, end) forwards; /* NTS: forwards makes sure text stays there */
+  animation: typing 5s steps(80, end) forwards; /* NTS: forwards makes sure text stays there */
 /*     blink-caret .5s step-end infinite; */
 }
 
