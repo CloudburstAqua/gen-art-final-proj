@@ -37,8 +37,7 @@
       const keywords = ['rushing river', 'large, long centipede', 'red bumps', 'pincers',
         'poking', 'most relieving feeling', 'all in an instant',
         'skin intact', 'irregular spiny extrusions', 'red bumps',
-        'like a ribbon'
-      ]
+        'like a ribbon']
 
 
       const lines = desc.trim().split('\n');
@@ -118,7 +117,7 @@
           .addTo('body')
 
         canvas.fillStyle = 'red'
-        canvas.ctx.strokeStyle = 'rgba(255, 0, 0, 0.7)'
+        canvas.ctx.strokeStyle = 'rgba(255, 0, 0, 0.8)'
         canvas.style.position = 'absolute' // so I can modify it's exact position
         canvas.style.top = '0'
         canvas.style.left = '0'
@@ -140,13 +139,13 @@
         resize() //NTS: makes sure that the canvas changes size as scrolling happens
 
         // makes old circles fade into background
-        canvas.ctx.fillStyle = 'rgba(0,0,0,0.03)'
+        canvas.ctx.fillStyle = 'rgba(0,0,0,0.05)'
         canvas.ctx.fillRect(0, 0, nn.width, document.body.scrollHeight) 
 
-        const t = performance.now() * 0.0008
-        const cx = nn.width / 3
+        const t = performance.now() * 0.001
+        const cx = nn.width / 2
         const cy = window.scrollY + nn.height / 3
-        const r = 300
+        const r = 500
 
         x = p.get(t, 0) * r + cx
         y = p.get(t, 100) * r + cy
